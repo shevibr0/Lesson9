@@ -8,13 +8,14 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
-import { PurchasesComponent } from './purchases/purchases.component';
+import { PurchasesComponent} from './purchases/purchases.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { FormsModule } from '@angular/forms';
 import { ProductFormComponentComponent } from './product-form-component/product-form-component.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const appRoutes:Routes=[
   {path:'', component:MenuComponent},
   {path:'Products', component:ProductlistComponent},
@@ -53,7 +54,8 @@ const appRoutes:Routes=[
         appId: "1:853811771380:web:98fa2efafca1334b4deba1"
       }
     ),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

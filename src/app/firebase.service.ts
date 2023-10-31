@@ -203,5 +203,12 @@ export class FirebaseService {
         return null;
       });
   }
+  addPurchase(purchaseData: any): Promise<void> {
+    // Generate a new document with a unique ID in the "Purchases" collection
+    const purchaseRef = this.firestore.collection('Purchases').doc();
 
+    // Set the purchase data for the newly created document
+    return purchaseRef.set(purchaseData);
+  }
+  
   }

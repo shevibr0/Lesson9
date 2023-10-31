@@ -4,13 +4,37 @@
       <th>Product Names</th>
       <th>Purchased Dates</th>
     </tr>
+  
     <tr *ngFor="let customer of customers">
-      <td>{{ customer.FirstName }}</td>
+      <td>{{ customer.FirstName }}
+        <button (click)="openPurchaseForm(customer.id)">Buy Product</button>
+
+<div *ngIf="showPurchaseForm && selectedCustomerId === customer.id">
+  <form (submit)="purchaseProduct(customer.id)">
+    <label for="product">Select a product:</label>
+    <select id="product" [(ngModel)]="selectedProductId" name="product">
+      <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+    </select>
+    <button type="submit">Buy</button>
+  </form>
+</div>
+  
+      </td>
+      <td>
+        <ul>
+          <li *ngFor="let product of customer.boughtProducts">
+            <a [routerLink]="['/EditProduct', product.id]">{{ product.name }}</a>
+          </li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li *ngFor="let product of customer.boughtProducts">
+            {{ product.date | date: 'dd/MM/yyyy' }}
+          </li>
+        </ul>
+      </td>
     </tr>
-    <tr *ngFor="let product of customer.products">
-        <td> <a [routerLink]="['/EditProduct', product.id]">{{ product.name }}</a></td>
-      </tr>
-      <tr  *ngFor="let date of customer.purchasedDates">
-        <td>{{ date }}</td>
-      </tr>
   </table>
+
+  
