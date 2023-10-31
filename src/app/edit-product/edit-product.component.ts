@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,8 +7,9 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent {
-   
-  productId: string=""
+
+  products:any[]=[]
+  productId: string = "";
   constructor(private route: ActivatedRoute) {
     this.productId = this.route.snapshot.params['id'];
     console.log("this.productId params",this.productId)

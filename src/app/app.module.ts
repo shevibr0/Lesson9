@@ -2,13 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { ContainerComponent } from './Demo1_Projection/singleslot/container/container.component';
-import { ContentComponent } from './Demo1_Projection/singleslot/content/content.component';
-import { ContainerComponent1 } from './Demo1_Projection/multislot/container/container.component';
-import { ContentComponent1 } from './Demo1_Projection/multislot/content/content.component';
-import { Directive1Directive } from './Directives/directive1.directive';
-import { Directive2Directive } from './Directives/directive2.directive';
-import { Directive3Directive } from './Directives/directive3.directive';
 import { CommonModule } from '@angular/common'; 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -21,25 +14,20 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { FormsModule } from '@angular/forms';
 import { ProductFormComponentComponent } from './product-form-component/product-form-component.component';
+import { CustomerFormComponent } from './customer-form/customer-form.component';
 const appRoutes:Routes=[
   {path:'', component:MenuComponent},
   {path:'Products', component:ProductlistComponent},
    {path:'Customers', component:CustomersComponent},
   {path:'Purchases', component:PurchasesComponent},
   {path:'EditCustomer/:id', component:EditCustomerComponent},
+  {path:'EditCustomer/:id/EditProduct', component:EditProductComponent},
   {path:'Products/EditProduct/:id', component:EditProductComponent}
   
  ]
 @NgModule({
   declarations: [
     AppComponent,
-    ContainerComponent,
-    ContentComponent,
-    ContainerComponent1,
-    ContentComponent1,
-    Directive1Directive,
-    Directive2Directive,
-    Directive3Directive,
     MenuComponent,
     ProductsComponent,
     CustomersComponent,
@@ -48,6 +36,7 @@ const appRoutes:Routes=[
     EditCustomerComponent,
     ProductlistComponent,
     ProductFormComponentComponent,
+    CustomerFormComponent,
   
   ],
   imports: [

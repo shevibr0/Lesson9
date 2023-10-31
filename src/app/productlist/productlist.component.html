@@ -22,7 +22,7 @@
             <div *ngFor="let customer of product.Customers;let first=first">
               <div *ngIf="first">
               <strong>Name: </strong>
-              <a [routerLink]="'EditCustomer/' + customer.id">
+              <a [routerLink]="'/EditCustomer/' + customer.id">
                 {{ customer.FirstName }} {{ customer.LastName }}
               </a><br/>
               <strong>Purchase Date: </strong>{{ customer.Date }}<br/>

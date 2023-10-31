@@ -1,1 +1,16 @@
-<p>customers works!</p>
+<table border="1">
+    <tr>
+      <th>Customer Name</th>
+      <th>Product Names</th>
+      <th>Purchased Dates</th>
+    </tr>
+    <tr *ngFor="let customer of customers">
+      <td>{{ customer.FirstName }}</td>
+    </tr>
+    <tr *ngFor="let product of customer.products">
+        <td> <a [routerLink]="['/EditProduct', product.id]">{{ product.name }}</a></td>
+      </tr>
+      <tr  *ngFor="let date of customer.purchasedDates">
+        <td>{{ date }}</td>
+      </tr>
+  </table>

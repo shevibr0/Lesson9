@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore"
 import { DocumentReference, QuerySnapshot } from 'firebase/firestore';
-import { Observable, from, throwError } from 'rxjs';
+import { Observable, forkJoin, from, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 @Injectable({
@@ -103,9 +103,13 @@ export class FirebaseService {
       })
     );
   }
+
+
   updateProduct(productId: string, updatedData: any) {
     return this.firestore.collection('Products').doc(productId).update(updatedData);
   }
+
+
   deleteProduct(productId: string): Observable<void> {
     // Create a batch to perform multiple operations atomically
     const batch = this.firestore.firestore.batch();
@@ -133,4 +137,71 @@ export class FirebaseService {
     // Return an Observable (you may need to import it)
     return from(batch.commit());
   }
-}
+
+  updateCustomer(customertId: string,updatedCustomerData: any) {
+    return this.firestore.collection('Customers').doc(customertId).update(updatedCustomerData);
+  }
+
+
+  deleteCustomer (customerId: string): Observable<void> {
+    // Create a batch to perform multiple operations atomically
+    const batch = this.firestore.firestore.batch();
+
+    // Delete the product document
+    const productRef = this.firestore.collection('Customers').doc(customerId).ref;
+    batch.delete(productRef);
+
+    // Delete all related purchases
+    const purchasesRef = this.firestore.collection('Purchases').ref.where('CusomertID', '==', customerId);
+    purchasesRef.get().then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        const purchaseRef = this.firestore.collection('Purchases').doc(doc.id).ref;
+        batch.delete(purchaseRef);
+      });
+
+      // Commit the batch to execute all operations
+      batch.commit().then(() => {
+        console.log('Product and related purchases deleted successfully.');
+      }).catch((error) => {
+        console.error('Error deleting product and related purchases:', error);
+      });
+    });
+
+    // Return an Observable (you may need to import it)
+    return from(batch.commit());
+  }
+
+  getCustomerPurchases(customerId: string): Observable<any[]> {
+    return this.firestore
+      .collection('Purchases', (ref) => ref.where('CustomerID', '==', customerId))
+      .valueChanges();
+  }
+
+
+  findProductById(productId: string) {
+    // Replace 'Products' with the name of your Firestore collection
+    return this.firestore
+      .collection('Products')
+      .doc(productId)
+      .get()
+      .toPromise() // Convert to a Promise
+      .then((doc:any) => {
+        if (doc.exists) {
+          // Product with the specified ID found
+          const product = doc.data();
+          console.log('Found product:', product);
+          return product;
+        } else {
+          // Product not found
+          console.error('Product not found');
+          return null;
+        }
+      })
+      .catch((error) => {
+        // Handle any errors
+        console.error('Error fetching product:', error);
+        return null;
+      });
+  }
+
+  }

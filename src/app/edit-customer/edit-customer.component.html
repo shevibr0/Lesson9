@@ -1,1 +1,13 @@
-<p>edit-customer works!</p>
+<div>
+    <app-customer-form [customerId]="customerId"></app-customer-form>
+</div>
+
+<h2>Purchased Products</h2>
+<ul>
+  <li *ngFor="let product of products1">
+    <a [routerLink]="'/EditCustomer/' + product.id +'/EditProduct'">{{ product.name }}</a>
+   
+  </li>
+</ul>
+
+ 
