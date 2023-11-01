@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common'; 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
@@ -16,14 +17,22 @@ import { FormsModule } from '@angular/forms';
 import { ProductFormComponentComponent } from './product-form-component/product-form-component.component';
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './auth.guard';
+import { adminGuard } from './admin.guard'
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 const appRoutes:Routes=[
-  {path:'', component:MenuComponent},
-  {path:'Products', component:ProductlistComponent},
-   {path:'Customers', component:CustomersComponent},
-  {path:'Purchases', component:PurchasesComponent},
-  {path:'EditCustomer/:id', component:EditCustomerComponent},
-  {path:'EditCustomer/:id/EditProduct', component:EditProductComponent},
-  {path:'Products/EditProduct/:id', component:EditProductComponent}
+  {path:'menu', component:MenuComponent},
+  {path:'admin-dashboard',component: AdminDashboardComponent,canActivate: [adminGuard]},
+  {path:'', component:LoginComponent},
+  {path: 'not-authorized', component: NotAuthorizedComponent },
+  {path:'Products', component:ProductlistComponent, canActivate: [AuthGuard]},
+   {path:'Customers', component:CustomersComponent,canActivate: [AuthGuard]},
+  {path:'Purchases', component:PurchasesComponent,canActivate: [AuthGuard]},
+  {path:'EditCustomer/:id', component:EditCustomerComponent,canActivate: [AuthGuard, adminGuard]},
+  {path:'EditCustomer/:id/EditProduct', component:EditProductComponent, canActivate: [AuthGuard, adminGuard]},
+  {path:'Products/EditProduct/:id', component:EditProductComponent,canActivate: [AuthGuard, adminGuard]}
   
  ]
 @NgModule({
@@ -38,6 +47,9 @@ const appRoutes:Routes=[
     ProductlistComponent,
     ProductFormComponentComponent,
     CustomerFormComponent,
+    LoginComponent,
+    AdminDashboardComponent,
+    NotAuthorizedComponent,
   
   ],
   imports: [
@@ -45,6 +57,7 @@ const appRoutes:Routes=[
     AngularFirestoreModule,
     FormsModule,
     CommonModule,
+    AngularFireAuthModule,
     AngularFireModule.initializeApp(
       { apiKey: "AIzaSyCt3SCOzN1vlSOLv-teCkI8iof7MR3ITMU",
         authDomain: "website-for-managing-a-store.firebaseapp.com",
@@ -57,7 +70,7 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [AuthGuard, adminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

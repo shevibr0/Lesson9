@@ -3,7 +3,7 @@ import { FirebaseService } from '../firebase.service';
 import { Observable, catchError, from, tap, throwError } from 'rxjs';
 import { Timestamp } from 'firebase/firestore';
 import { combineLatest } from 'rxjs';
-import { map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -12,34 +12,34 @@ import { map} from 'rxjs/operators';
   styleUrls: ['./product-form-component.component.css']
 })
 export class ProductFormComponentComponent {
-  constructor(private productService: FirebaseService) {}
+  constructor(private productService: FirebaseService) { }
   @Input()
 
   productId: string = "";
   updatedProductName: string = "";
   updatedProductPrice: number = 0;
-  updatedProductQuantity: number=0;
-  customers:any[]=[]
-  products:any[]=[]
-  purchases:any[]=[]
+  updatedProductQuantity: number = 0;
+  customers: any[] = []
+  products: any[] = []
+  purchases: any[] = []
 
 
 
   updateProduct() {
-    console.log("this.productId",this.productId)
+    console.log("this.productId", this.productId)
     const updatedProductData = {
-      Quantity:this.updatedProductQuantity,
+      Quantity: this.updatedProductQuantity,
       name: this.updatedProductName,
       price: this.updatedProductPrice,
     };
-   
+
     this.productService.updateProduct(this.productId, updatedProductData)
-    .then(() => {
-      console.log('Product updated successfully');
-    })
-    .catch((error: any) => {
-      console.error('Error updating product:', error);
-    });
+      .then(() => {
+        console.log('Product updated successfully');
+      })
+      .catch((error: any) => {
+        console.error('Error updating product:', error);
+      });
   }
 
 
@@ -60,9 +60,9 @@ export class ProductFormComponentComponent {
   ngOnInit() {
     // Combine data from different collections
     combineLatest([
-      this. productService.getAllProducts(),
-      this. productService.getAllCustomers(),
-      this. productService.getAllPurchases()
+      this.productService.getAllProducts(),
+      this.productService.getAllCustomers(),
+      this.productService.getAllPurchases()
     ])
       .pipe(
         map(([productData, customerData, purchaseData]) => {
@@ -79,25 +79,25 @@ export class ProductFormComponentComponent {
           const purchases = purchaseData.map((user: any) => ({
             id: user.payload.doc.id,
             ...user.payload.doc.data()
-            
+
           }));
-          
+
           // Combine data as needed
-          this.products.forEach((product:any) => {
+          this.products.forEach((product: any) => {
             product.Customers = this.getCustomersForProduct(
               product.id,
               purchases,
               customers
             );
-          
+
             return product;
           });
-         
+
           this.products = products;
-         this.purchases=purchases;
-         this.customers=customers;
-        
-         
+          this.purchases = purchases;
+          this.customers = customers;
+
+
         })
       )
       .subscribe(() => {
@@ -105,7 +105,7 @@ export class ProductFormComponentComponent {
           console.log(`Product: ${product.name}`);
           if (product.Customers) {
             console.log(`Customers who bought this product:`);
-            product.Customers.forEach((customer:any) => {
+            product.Customers.forEach((customer: any) => {
               // console.log(
               //   `Customer: ${customer.FirstName} ${customer.LastName}, Purchase Date: ${customer.Date}`
               // );
@@ -113,7 +113,7 @@ export class ProductFormComponentComponent {
           }
         });
       });
-   
+
   }
 
   getCustomersForProduct(productId: string, purchases: any[], customers: any[]) {
@@ -127,9 +127,9 @@ export class ProductFormComponentComponent {
       const customer = customers.find((c) => c.id === purchase.CustomerID);
       if (customer) {
         const purchaseDate = (purchase.Date as Timestamp).toDate(); // Convert Timestamp to Date
-      customerData.push({
-        ...customer,
-        Date: purchaseDate
+        customerData.push({
+          ...customer,
+          Date: purchaseDate
         });
       }
     }

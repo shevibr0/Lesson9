@@ -8,13 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EditProductComponent {
 
-  products:any[]=[]
+  products: any[] = []
   productId: string = "";
   constructor(private route: ActivatedRoute) {
     this.productId = this.route.snapshot.params['id'];
-    console.log("this.productId params",this.productId)
+    console.log("this.productId params", this.productId)
   }
 
 
- 
+
 }

@@ -18,7 +18,7 @@
     <label for="date">Date:</label>
     <input type="text" id="date" [(ngModel)]="selectedDate" name="date">
     <br>
-    {{selectedCustomer}}{{selectedProduct}}{{selectedDate}}
+    <!-- //{{selectedCustomer}}{{selectedProduct}}{{selectedDate}} -->
      <button (click)="searchPurchases()">Search</button>
   
      <table border="1" *ngIf="searchResults.length > 0">
