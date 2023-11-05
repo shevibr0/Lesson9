@@ -4,7 +4,10 @@ The ability to write code when my head is 100% occupied with another topic helpe
 
 From there I built an internal website for a second hand store
 
-.which includes information on 3 categories: products, customers and purchases
+which includes information on 3 categories: products, customers and purchases
+
+Display, add, delete and update operations of each of the categories and retrieve information by manipulations between the tables can be activated.
+Through the site you can track and extract information about customer activity, purchases and updating product details.
 
 Angular client-side
 
