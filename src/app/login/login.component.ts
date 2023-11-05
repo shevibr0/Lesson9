@@ -18,9 +18,9 @@ export class LoginComponent {
     const emailValue = this.email;
     const passwordValue = this.password;
     try {
-      const userCredential = await this.auth.signInWithEmailAndPassword(emailValue, passwordValue);
+      // const userCredential = await this.auth.signInWithEmailAndPassword(emailValue, passwordValue);
       // Authentication successful; navigate to the user's dashboard or another route
-      console.log("userCredential", userCredential)
+      //console.log("userCredential", userCredential)
       this.router.navigate(['/menu']);
     } catch (error) {
       // Handle login error (e.g., display a message to the user)
