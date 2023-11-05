@@ -11,7 +11,7 @@ Angular client-side
 Firebase server side
 
 Stored on the server:
-https://dynamic-biscochitos-fd7c25.netlify.app
+https://gentle-chimera-d6973f.netlify.app/
 
 I enjoyed.
 
