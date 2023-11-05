@@ -1,41 +1,42 @@
-<div>
+<div class="product-list">
   <app-products></app-products>
 </div>
-<div>
+
+<div class="product-list">
   <ul>
-    <li style="border: 1px solid black;" *ngFor="let product of products">
-      <div>
-        <strong>Product Name:</strong>
-        <a [routerLink]="'EditProduct/' + product.id">{{ product.name }}</a><br/>
+    <li class="product-item" *ngFor="let product of products">
+      <div class="product-details">
+        <strong class="detail-label">Product Name:</strong>
+        <a [routerLink]="'EditProduct/' + product.id" class="product-link">{{ product.name }}</a>
       </div>
-      <div>
-        <strong>Price:</strong> {{ product.price }}
+      <div class="product-details">
+        <strong class="detail-label">Price:</strong> {{ product.price }}
       </div>
-      <div>
-        <strong>Quantity:</strong> {{ product.Quantity }}
+      <div class="product-details">
+        <strong class="detail-label">Quantity:</strong> {{ product.Quantity }}
       </div>
 
-      <div>
-        <strong>Customers that bought the product:</strong>
-        <div>
-          
-            <div *ngFor="let customer of product.Customers;let first=first">
-              <div *ngIf="first">
+      <div class="product-details">
+        <strong class="detail-label">Customers that bought the product:</strong>
+        <div class="customer-list">
+          <div *ngFor="let customer of product.Customers; let first = first" class="customer">
+            <div *ngIf="first" class="customer-info">
               <strong>Name: </strong>
-              <a [routerLink]="'/EditCustomer/' + customer.id">
+              <a [routerLink]="'/EditCustomer/' + customer.id" class="customer-link">
                 {{ customer.FirstName }} {{ customer.LastName }}
-              </a><br/>
-              <strong>Purchase Date: </strong>{{ customer.Date }}<br/>
-              <button (click)="addProductToCustomer(customer)">Add</button>
-              <div *ngIf="customer.isAddingProduct">
-                <select [(ngModel)]="customer.selectedProduct">
+              </a>
+              <br>
+              <strong>Purchase Date: </strong>{{ customer.Date }}
+              <br>
+              <button (click)="addProductToCustomer(customer)" class="add-button">Add</button>
+              <div *ngIf="customer.isAddingProduct" class="product-add">
+                <select [(ngModel)]="customer.selectedProduct" class="select-product">
                   <option *ngFor="let prod of products" [ngValue]="prod">{{ prod.name }}</option>
                 </select>
-                <button (click)="createPurchaseForCustomer(customer)">Save</button>
+                <button (click)="createPurchaseForCustomer(customer)" class="save-button">Save</button>
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </li>

@@ -1,0 +1,107 @@
+.home-page {
+  background: linear-gradient(135deg, #f0f0f0 50%, hsl(209, 26%, 35%) 50%);
+  background-size: 150% 150%;
+  background-position: right bottom;
+  padding: 20px;
+}
+
+/* Styling for the product list */
+.product-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  background-color: #f5f5f5; /* Light gray background */
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  margin-bottom: 20px;
+  flex-basis: calc(33.33% - 20px); /* 3 items per row with spacing */
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.product-item:hover {
+  background-color:hsl(209, 26%, 35%);; /* Darker blue on hover */
+  transform: translateY(-5px); /* Slight lift on hover */
+  color: #121415;
+}
+
+/* Styling for product details */
+.product-details {
+  margin: 10px;
+  text-align: center;
+}
+
+/* Styling for product details rows */
+.product-details-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-label {
+  font-weight: bold;
+}
+
+.product-link {
+  text-decoration: none;
+  color:black;
+}
+
+.customer-list {
+  margin-top: 10px;
+}
+
+.customer {
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.customer-info {
+  margin-bottom: 10px;
+}
+
+.customer-link {
+  text-decoration: none;
+  color: hsl(209, 26%, 35%);
+}
+
+.add-button {
+  background-color:hsl(209, 26%, 35%);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+.add-button:hover {
+  background-color: hsl(209, 26%, 35%);; /* Slightly darker blue on hover */
+}
+
+.select-product {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.save-button {
+  background-color: hsl(209, 26%, 35%);
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+}
+
+.save-button:hover {
+  background-color: hsl(209, 26%, 35%);; /* Slightly darker blue on hover */
+}

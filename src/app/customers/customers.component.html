@@ -6,7 +6,7 @@
     </tr>
   
     <tr *ngFor="let customer of customers">
-      <td>{{ customer.FirstName }}
+      <td>{{ customer.FirstName }}<br/>
         <button (click)="openPurchaseForm(customer.id)">Buy Product</button>
 
 <div *ngIf="showPurchaseForm && selectedCustomerId === customer.id">
@@ -23,7 +23,7 @@
       <td>
         <ul>
           <li *ngFor="let product of customer.boughtProducts">
-            <a [routerLink]="['/EditProduct', product.id]">{{ product.name }}</a>
+            <a [routerLink]="'EditProduct/'+ product.id">{{ product.name }}</a>
           </li>
         </ul>
       </td>

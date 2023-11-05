@@ -1,37 +1,35 @@
+<div class="container">
+  <h2>Purchased Page</h2>
+  <label for="customer">Select Customer:</label>
+  <select id="customer" [(ngModel)]="selectedCustomer" name="customer">
+    <option value="">All Customers</option>
+    <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.FirstName }}</option>
+  </select>
+  <br>
 
-<div>
-    <h2>Purchased Page</h2>
-    <label for="customer">Select Customer:</label>
-    <select id="customer" [(ngModel)]="selectedCustomer" name="customer">
-      <option value="">All Customers</option>
-      <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.FirstName }}</option>
-    </select>
-    <br>
- 
-    <label for="product">Select Product:</label>
-    <select id="product" [(ngModel)]="selectedProduct" name="product">
-      <option value="">All Products</option>
-      <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
-    </select>
-    <br>
-  
-    <label for="date">Date:</label>
-    <input type="text" id="date" [(ngModel)]="selectedDate" name="date">
-    <br>
-    <!-- //{{selectedCustomer}}{{selectedProduct}}{{selectedDate}} -->
-     <button (click)="searchPurchases()">Search</button>
-  
-     <table border="1" *ngIf="searchResults.length > 0">
-      <tr>
-        <th>Customer Name</th>
-        <th>Product Name</th>
-        <th>Purchase Date</th>
-      </tr>
-      <tr *ngFor="let result of searchResults">
-        <td>{{ result.customerName }}</td>
-        <td>{{ result.productName  }}</td>
-        <td>{{ result.purchaseDate | date: 'dd/MM/yyyy' }}</td>
-      </tr>
-    </table>
+  <label for="product">Select Product:</label>
+  <select id="product" [(ngModel)]="selectedProduct" name="product">
+    <option value="">All Products</option>
+    <option *ngFor="let product of products" [value]="product.id">{{ product.name }}</option>
+  </select>
+  <br>
 
- </div>
+  <label for="date">Date:</label>
+  <input type="text" id="date" [(ngModel)]="selectedDate" name="date">
+  <br>
+  <!-- //{{selectedCustomer}}{{selectedProduct}}{{selectedDate}} -->
+   <button (click)="searchPurchases()">Search</button>
+
+   <table border="1" *ngIf="searchResults.length > 0">
+    <tr>
+      <th>Customer Name</th>
+      <th>Product Name</th>
+      <th>Purchase Date</th>
+    </tr>
+    <tr *ngFor="let result of searchResults">
+      <td>{{ result.customerName }}</td>
+      <td>{{ result.productName  }}</td>
+      <td>{{ result.purchaseDate | date: 'dd/MM/yyyy' }}</td>
+    </tr>
+  </table>
+</div>

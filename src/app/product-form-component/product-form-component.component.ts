@@ -4,6 +4,7 @@ import { Observable, catchError, from, tap, throwError } from 'rxjs';
 import { Timestamp } from 'firebase/firestore';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,10 +13,13 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./product-form-component.component.css']
 })
 export class ProductFormComponentComponent {
-  constructor(private productService: FirebaseService) { }
+  constructor(private productService: FirebaseService,private route: ActivatedRoute) { }
+  
+  customer:any={};
+  customerId:string=""
   @Input()
-
   productId: string = "";
+  product:any={}
   updatedProductName: string = "";
   updatedProductPrice: number = 0;
   updatedProductQuantity: number = 0;
@@ -24,7 +28,8 @@ export class ProductFormComponentComponent {
   purchases: any[] = []
 
 
-
+ 
+  
   updateProduct() {
     console.log("this.productId", this.productId)
     const updatedProductData = {
@@ -57,7 +62,33 @@ export class ProductFormComponentComponent {
       })
     );
   }
-  ngOnInit() {
+  ngOnInit()  {
+  this.route.paramMap.subscribe(params => {
+    this.customer = params.get('id');
+  });
+
+  console.log('Customer ID:', this.customerId); // Check the value in the console.
+
+    this.route.paramMap.subscribe((params) => {
+      const productId = params.get('id'); // Assuming the route parameter is named 'id'
+
+      if (productId) {
+        // Call a function to fetch the customer details from Firebase
+        this.getProductDetails(productId);
+      }
+    });
+  }
+  getProductDetails(productId: string) {
+    // Use your Firebase service to fetch the customer details
+    this.productService.getProductById(productId).subscribe((product) => {
+      if (product) {
+        this.product = product;
+        this.updatedProductName=this.product.name;
+        this.updatedProductPrice=this.product.price;
+        this.updatedProductQuantity=this.product.Quantity // Set the customer object with the retrieved data
+      }
+    });
+  
     // Combine data from different collections
     combineLatest([
       this.productService.getAllProducts(),

@@ -1,0 +1,88 @@
+/* Styles for the form container */
+.container{
+    width: 40%;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border: 1px solid hsl(209, 26%, 35%);
+    border-radius: 5px;
+}
+h2 {
+    text-align: center;
+    background-color: #f3f3f3;
+    padding: 20px;
+    border: 1px solid hsl(209, 26%, 35%);
+    border-radius: 5px;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+  
+  /* Styles for form labels */
+  label {
+    font-weight: bold;
+  }
+  
+  /* Styles for form select elements */
+  select {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid hsl(209, 26%, 35%);
+    border-radius: 3px;
+  }
+  
+  /* Styles for form input elements */
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin: 5px 0;
+    border: 1px solid hsl(209, 26%, 35%);
+    border-radius: 3px;
+  }
+  
+  /* Styles for the search button */
+  button {
+    background-color: hsl(209, 26%, 35%);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  
+  /* Styles for the search results table */
+  table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Styles for table headers */
+  table th {
+    background-color: #f3f3f3;
+    font-weight: bold;
+  }
+  
+  /* Styles for table rows */
+  table tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles for table rows on hover */
+  table tr:hover {
+    background-color: #e7a0a0;
+  }
+  
+  /* Styles for customer links */
+  .customer-link {
+    text-decoration: none;
+    color: hsl(209, 26%, 35%);
+  }
+  

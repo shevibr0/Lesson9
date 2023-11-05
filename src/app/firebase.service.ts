@@ -15,8 +15,14 @@ export class FirebaseService {
   getAllProducts() {
     return this.firestore.collection('Products').snapshotChanges()
   }
+  getProductById(productId: string): Observable<any> {
+    return this.firestore.collection('Products').doc(productId).valueChanges();
+  }
   getAllCustomers() {
     return this.firestore.collection('Customers').snapshotChanges()
+  }
+  getCustomerById(customerId: string): Observable<any> {
+    return this.firestore.collection('Customers').doc(customerId).valueChanges();
   }
   getAllPurchases() {
     return this.firestore.collection('Purchases').snapshotChanges()
@@ -210,5 +216,7 @@ export class FirebaseService {
     // Set the purchase data for the newly created document
     return purchaseRef.set(purchaseData);
   }
-  
+  findProductById1(productId: string): Observable<any> {
+    return this.firestore.collection('Products').doc(productId).valueChanges();
+  }
   }

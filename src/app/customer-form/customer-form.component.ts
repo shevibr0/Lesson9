@@ -4,6 +4,7 @@ import { Observable, catchError, from, tap, throwError } from 'rxjs';
 import { Timestamp } from 'firebase/firestore';
 import { combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-customer-form',
@@ -11,17 +12,18 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./customer-form.component.css']
 })
 export class CustomerFormComponent {
-  constructor(private productService: FirebaseService) { }
+  constructor(private customerService: FirebaseService,private route: ActivatedRoute) { }
+  customer: any = {}
   @Input()
-
   customerId: string = "";
-  updatedCustomerFirstName: string = '';
-  updatedCustomerLastName: string = '';
-  updatedCustomerCity: string = '';
+  updatedCustomerFirstName: string = "";
+  updatedCustomerLastName: string = "";
+  updatedCustomerCity: string = "";
   purchases: any[] = []
   customers: any[] = []
   products: any[] = []
-
+productId:string=""
+  product: any = {}
 
   updateCustomer() {
     const updatedCustomerData = {
@@ -30,7 +32,7 @@ export class CustomerFormComponent {
       city: this.updatedCustomerCity,
     };
 
-    this.productService.updateCustomer(this.customerId, updatedCustomerData)
+    this.customerService.updateCustomer(this.customerId, updatedCustomerData)
       .then(() => {
         console.log('Product updated successfully');
       })
@@ -40,7 +42,7 @@ export class CustomerFormComponent {
   }
   deleteCustomer(customerId: string): Observable<void> {
     // Use from to convert the Promise into an Observable
-    return from(this.productService.deleteCustomer(customerId)).pipe(
+    return from(this.customerService.deleteCustomer(customerId)).pipe(
       // Handle the success case
       tap(() => {
         console.log('Product deleted successfully');
@@ -53,11 +55,32 @@ export class CustomerFormComponent {
     );
   }
   ngOnInit() {
+    this.route.paramMap.subscribe((params) => {
+      const customerId = params.get('id'); // Assuming the route parameter is named 'id'
+
+      if (customerId) {
+        // Call a function to fetch the customer details from Firebase
+        this.getCustomerDetails(customerId);
+      }
+    });
+  }
+
+  getCustomerDetails(customerId: string) {
+    // Use your Firebase service to fetch the customer details
+    this.customerService.getCustomerById(customerId).subscribe((customer) => {
+      if (customer) {
+        this.customer = customer;
+        this.updatedCustomerFirstName=this.customer.FirstName;
+        this.updatedCustomerLastName=this.customer.LastName;
+        this.updatedCustomerCity=this.customer.city // Set the customer object with the retrieved data
+      }
+    });
+  
     // Combine data from different collections
     combineLatest([
-      this.productService.getAllProducts(),
-      this.productService.getAllCustomers(),
-      this.productService.getAllPurchases()
+      this.customerService.getAllProducts(),
+      this.customerService.getAllCustomers(),
+      this.customerService.getAllPurchases()
     ])
       .pipe(
         map(([productData, customerData, purchaseData]) => {

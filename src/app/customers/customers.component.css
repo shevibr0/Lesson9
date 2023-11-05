@@ -1,0 +1,51 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px auto;
+    border: 1px solid  hsl(209, 26%, 35%);
+    border-radius: 5px;
+  }
+  
+  th {
+    background-color: hsl(209, 26%, 35%);
+    color: rgb(249, 243, 243);
+    font-style:inherit;
+    text-align: center;
+    padding: 10px;
+  }
+  
+  th, td {
+    border: 1px solid hsl(209, 26%, 35%);
+    padding: 10px;
+    
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f3f3f3;
+    
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #e7e7e7;
+  }
+  
+  button {
+    background-color: hsl(209, 26%, 35%);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  select {
+    padding: 5px;
+  }
+  
+  button[type="submit"] {
+    background-color:hsl(209, 26%, 35%);
+  }
+  
+  button[type="submit"]:hover {
+    background-color:  hsl(209, 26%, 35%);
+  }
+  

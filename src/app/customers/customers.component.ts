@@ -29,6 +29,7 @@ export class CustomersComponent {
             id: customer.payload.doc.id,
             ...customer.payload.doc.data()
           }));
+          
 
           const purchases = purchaseData.map((purchase: any) => ({
             id: purchase.payload.doc.id,
@@ -47,7 +48,9 @@ export class CustomersComponent {
           this.customers = customers.map((customer) => ({
             ...customer,
             boughtProducts: customerProducts[customer.id] || []
-          }));
+            
+          }
+          ));
         })
       )
       .subscribe(() => {
@@ -100,6 +103,7 @@ export class CustomersComponent {
         // After a successful purchase, close the form and reset the selected product
         this.showPurchaseForm = false;
         this.selectedProductId = null;
+  
       }).catch((error: any) => {
         console.error('Error purchasing the product:', error);
       });
