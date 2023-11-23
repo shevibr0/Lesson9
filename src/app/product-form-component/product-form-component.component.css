@@ -30,7 +30,7 @@ h2 {
 .update-button,
 .delete-button,
 .customer-item {
-  background-color: hsl(209, 26%, 35%);
+  background-color: hsl(209, 13%, 46%);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -54,7 +54,7 @@ h2 {
 
 .customer-link {
   text-decoration: none;
-  color: hsl(209, 26%, 35%);
+  color: hsl(240, 4%, 5%);
 }
 
 .customer-item:hover {

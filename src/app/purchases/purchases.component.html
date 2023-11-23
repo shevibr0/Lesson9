@@ -18,9 +18,9 @@
   <input type="text" id="date" [(ngModel)]="selectedDate" name="date">
   <br>
   <!-- //{{selectedCustomer}}{{selectedProduct}}{{selectedDate}} -->
-   <button (click)="searchPurchases()">Search</button>
+  <button (click)="searchPurchases()">Search</button>
 
-   <table border="1" *ngIf="searchResults.length > 0">
+  <table border="1" *ngIf="searchResults.length > 0">
     <tr>
       <th>Customer Name</th>
       <th>Product Name</th>
@@ -28,7 +28,7 @@
     </tr>
     <tr *ngFor="let result of searchResults">
       <td>{{ result.customerName }}</td>
-      <td>{{ result.productName  }}</td>
+      <td>{{ result.productName }}</td>
       <td>{{ result.purchaseDate | date: 'dd/MM/yyyy' }}</td>
     </tr>
   </table>

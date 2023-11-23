@@ -16,7 +16,7 @@ export class PurchasesComponent {
   products: any[] = [];
   selectedCustomer: string = "";
   selectedProduct: string = "";
-  selectedDate: string = "";
+  selectedDate: string = "2023-10-31";
   searchResults: any[] = [];
   allPurchases: any[] = []
 

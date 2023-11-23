@@ -1,4 +1,3 @@
-
 <form (ngSubmit)="updateProduct()" class="product-form">
   <label for="name">Product Name:</label>
   <input #name1 type="text" id="name" name="name" [(ngModel)]="updatedProductName" required>
@@ -12,7 +11,8 @@
 <h2>Customers who bought this product </h2>
 <ul class="customer-list">
   <li *ngFor="let customer of customers" class="customer-item">
-      <a [routerLink]="'/EditCustomer/' + customer.id" class="customer-link"> {{ customer.FirstName }} {{ customer.LastName }}</a>
-      
-    </li>
+    <a [routerLink]="'/EditCustomer/' + customer.id" class="customer-link" style="text-decoration-line:underline;"> {{
+      customer.FirstName }} {{ customer.LastName }}</a>
+
+  </li>
 </ul>

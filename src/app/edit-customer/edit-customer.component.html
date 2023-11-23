@@ -1,5 +1,5 @@
 <div>
-    <app-customer-form [customerId]="customerId"></app-customer-form>
+  <app-customer-form [customerId]="customerId"></app-customer-form>
 </div>
 
 <h2>Purchased Products By this customer</h2>
@@ -7,8 +7,8 @@
 <ul class="customer-list">
   <li *ngFor="let product of products1" class="customer-item">
     <ng-container>
-      <a [routerLink]="['/EditProduct', product.id]" class="customer-link">{{ product.name }}</a> 
+      <a [routerLink]="['/EditProduct', product.id]" class="customer-link" style="text-decoration-line:underline;">{{
+        product.name }}</a>
     </ng-container>
   </li>
 </ul>
- 
