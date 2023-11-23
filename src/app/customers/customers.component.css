@@ -1,51 +1,68 @@
+/* Normal mode styles for larger screens */
 table {
-    border-collapse: collapse;
-    width: 100%;
-    margin: 20px auto;
-    border: 1px solid  hsl(209, 26%, 35%);
-    border-radius: 5px;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px auto;
+  border: 1px solid hsl(209, 26%, 35%);
+  border-radius: 5px;
+}
+
+th {
+  background-color: hsl(209, 26%, 35%);
+  color: rgb(249, 243, 243);
+  font-style: inherit;
+  text-align: center;
+  padding: 10px;
+}
+
+th, td {
+  border: 1px solid hsl(209, 26%, 35%);
+  padding: 10px;
+}
+
+tr:nth-child(even) {
+  background-color: #f3f3f3;
+}
+
+tr:nth-child(odd) {
+  background-color: #e7e7e7;
+}
+
+button {
+  background-color: hsl(209, 26%, 35%);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+select {
+  padding: 5px;
+}
+
+button[type="submit"] {
+  background-color: hsl(209, 26%, 35%);
+}
+
+button[type="submit"]:hover {
+  background-color: hsl(209, 26%, 35%);
+}
+
+/* Responsive mode styles for smaller screens */
+@media only screen and (max-width: 600px) {
+  table {
+    /* Add or override styles for smaller screens */
+    width: 80%; /* Adjust width as needed */
+    margin: 10px auto; /* Adjust margin as needed */
   }
-  
-  th {
-    background-color: hsl(209, 26%, 35%);
-    color: rgb(249, 243, 243);
-    font-style:inherit;
-    text-align: center;
-    padding: 10px;
-  }
-  
+
   th, td {
-    border: 1px solid hsl(209, 26%, 35%);
-    padding: 10px;
-    
+    /* Add or override styles for smaller screens */
+    font-size: 14px; /* Adjust font size as needed */
   }
-  
-  tr:nth-child(even) {
-    background-color: #f3f3f3;
-    
+
+  button, select {
+    /* Add or override styles for smaller screens */
+    padding: 3px 6px; /* Adjust padding as needed */
   }
-  
-  tr:nth-child(odd) {
-    background-color: #e7e7e7;
-  }
-  
-  button {
-    background-color: hsl(209, 26%, 35%);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  select {
-    padding: 5px;
-  }
-  
-  button[type="submit"] {
-    background-color:hsl(209, 26%, 35%);
-  }
-  
-  button[type="submit"]:hover {
-    background-color:  hsl(209, 26%, 35%);
-  }
-  
+}

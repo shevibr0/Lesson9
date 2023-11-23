@@ -1,3 +1,4 @@
+/* Normal mode styles for larger screens */
 .customer-form {
   background-color: #f3f3f3;
   padding: 20px;
@@ -33,4 +34,18 @@
   border: none;
   padding: 10px 20px;
   cursor: pointer;
+}
+
+/* Responsive mode styles for smaller screens */
+@media only screen and (max-width: 600px) {
+  .customer-form {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  .update-button,
+  .delete-button {
+    width: 100%; /* Make buttons full width for smaller screens */
+    margin-right: 0; /* Remove margin for smaller screens */
+    margin-bottom: 10px; /* Add space between buttons for smaller screens */
+  }
 }

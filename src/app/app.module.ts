@@ -18,23 +18,31 @@ import { ProductFormComponentComponent } from './product-form-component/product-
 import { CustomerFormComponent } from './customer-form/customer-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
-import { AuthGuard } from './auth.guard';
-import { adminGuard } from './admin.guard'
+// import { AuthGuard } from './auth.guard';
+// import { adminGuard } from './admin.guard'
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 const appRoutes: Routes = [
   { path: 'menu', component: MenuComponent },
-  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [adminGuard] },
-  { path: '', component: MenuComponent },
+  {
+    path: 'admin-dashboard', component: AdminDashboardComponent, //canActivate: [adminGuard] 
+  }, { path: '', component: LoginComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
-  { path: 'Products', component: ProductlistComponent, canActivate: [AuthGuard] },
-  { path: 'Customers', component: CustomersComponent, canActivate: [AuthGuard] },
-  { path: 'Customers/EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard] },
-  { path: 'Purchases', component: PurchasesComponent, canActivate: [AuthGuard] },
-  { path: 'EditCustomer/:id', component: EditCustomerComponent, canActivate: [AuthGuard, adminGuard] },
-  { path: 'EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard, adminGuard] },
-  { path: 'Products/EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard, adminGuard] }
-
+  {
+    path: 'Products', component: ProductlistComponent, //canActivate: [AuthGuard]
+  }, {
+    path: 'Customers', component: CustomersComponent, //canActivate: [AuthGuard] },
+  }, {
+    path: 'Customers/EditProduct/:id', component: EditProductComponent, //canActivate: [AuthGuard] },
+  }, {
+    path: 'Purchases', component: PurchasesComponent, //canActivate: [AuthGuard] },
+  }, {
+    path: 'EditCustomer/:id', component: EditCustomerComponent, //canActivate: [AuthGuard, adminGuard] },
+  }, {
+    path: 'EditProduct/:id', component: EditProductComponent, //canActivate: [AuthGuard, adminGuard] },
+  }, {
+    path: 'Products/EditProduct/:id', component: EditProductComponent, //canActivate: [AuthGuard, adminGuard] }
+  },
 ]
 @NgModule({
   declarations: [
@@ -72,7 +80,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     BrowserAnimationsModule
   ],
-  providers: [AuthGuard, adminGuard],
+  // providers: [AuthGuard, adminGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

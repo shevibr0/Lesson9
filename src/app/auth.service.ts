@@ -16,55 +16,55 @@ interface UserData {
 })
 export class AuthService {
 
-  email: string = ""; // Add an email property
-  password: string = ""; // Add a password property
+  // email: string = ""; // Add an email property
+  // password: string = ""; // Add a password property
 
-  user: Observable<firebase.default.User | null>;
+  // user: Observable<firebase.default.User | null>;
 
-  constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
-    this.user = afAuth.authState;
-  }
+  // constructor(private afAuth: AngularFireAuth, private firestore: AngularFirestore) {
+  //   this.user = afAuth.authState;
+  // }
 
-  async isUserAdmin(email: string, password: string): Promise<boolean> {
-    try {
-      const userCredential = await this.login(email, password);
-    console.log("userCredential",userCredential)
-    
-      if (userCredential && userCredential.user) {
-        // Fetch the user's admin status from Firestore
-        const userDoc = await this.firestore.collection('users').doc(userCredential.user.uid).get().toPromise();
-        
-        if (userDoc && userDoc.exists) {
-          const userData = userDoc.data() as UserData;
-          console.log("userData",userData)
-          return userData.admin === true;
-         
-        } else {
-          console.error('User document not found');
-          return false;
-        }
-      } else {
-        console.error('User not authenticated');
-        return false;
-      }
-    } catch (error) {
-      console.error('Error checking admin status:', error);
-      return false;
-    }
-  }
-  isAuthenticated(): boolean {
-    return !!this.afAuth.currentUser;
-  }
-  setCredentials(email: string, password: string) {
-    this.email = email;
-    this.password = password;
-  }
-  login(email: string, password: string): Promise<firebase.default.auth.UserCredential> {
-    console.log("login success")
-    return this.afAuth.signInWithEmailAndPassword(email, password);
-  }
+  // async isUserAdmin(email: string, password: string): Promise<boolean> {
+  //   try {
+  //     const userCredential = await this.login(email, password);
+  //   console.log("userCredential",userCredential)
 
-  logout(): Promise<void> {
-    return this.afAuth.signOut();
-  }
+  //     if (userCredential && userCredential.user) {
+  //       // Fetch the user's admin status from Firestore
+  //       const userDoc = await this.firestore.collection('users').doc(userCredential.user.uid).get().toPromise();
+
+  //       if (userDoc && userDoc.exists) {
+  //         const userData = userDoc.data() as UserData;
+  //         console.log("userData",userData)
+  //         return userData.admin === true;
+
+  //       } else {
+  //         console.error('User document not found');
+  //         return false;
+  //       }
+  //     } else {
+  //       console.error('User not authenticated');
+  //       return false;
+  //     }
+  //   } catch (error) {
+  //     console.error('Error checking admin status:', error);
+  //     return false;
+  //   }
+  // }
+  // isAuthenticated(): boolean {
+  //   return !!this.afAuth.currentUser;
+  // }
+  // setCredentials(email: string, password: string) {
+  //   this.email = email;
+  //   this.password = password;
+  // }
+  // login(email: string, password: string): Promise<firebase.default.auth.UserCredential> {
+  //   console.log("login success")
+  //   return this.afAuth.signInWithEmailAndPassword(email, password);
+  // }
+
+  // logout(): Promise<void> {
+  //   return this.afAuth.signOut();
+  // }
 }

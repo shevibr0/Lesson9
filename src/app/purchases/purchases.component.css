@@ -1,88 +1,90 @@
-/* Styles for the form container */
-.container{
-    width: 40%;
-    margin: 0 auto;
-    background-color: #f3f3f3;
-    padding: 20px;
-    border: 1px solid hsl(209, 26%, 35%);
-    border-radius: 5px;
+/* Normal mode styles for larger screens */
+.container {
+  width: 40%;
+  margin: 0 auto;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border: 1px solid hsl(209, 26%, 35%);
+  border-radius: 5px;
 }
+
 h2 {
-    text-align: center;
-    background-color: #f3f3f3;
-    padding: 20px;
-    border: 1px solid hsl(209, 26%, 35%);
-    border-radius: 5px;
-    width: 40%;
-    margin: 0 auto;
-    margin-top: 20px;
+  text-align: center;
+  background-color: #f3f3f3;
+  padding: 20px;
+  border: 1px solid hsl(209, 26%, 35%);
+  border-radius: 5px;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid hsl(209, 26%, 35%);
+  border-radius: 3px;
+}
+
+button {
+  background-color: hsl(209, 26%, 35%);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f3f3f3;
+  font-weight: bold;
+}
+
+table tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+table tr:hover {
+  background-color: #e7a0a0;
+}
+
+.customer-link {
+  text-decoration: none;
+  color: hsl(209, 26%, 35%);
+}
+
+/* Responsive mode styles for smaller screens */
+@media only screen and (max-width: 600px) {
+  .container,
+  h2 {
+    width: 80%; /* Adjust width for smaller screens */
   }
-  
-  /* Styles for form labels */
-  label {
-    font-weight: bold;
-  }
-  
-  /* Styles for form select elements */
-  select {
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0;
-    border: 1px solid hsl(209, 26%, 35%);
-    border-radius: 3px;
-  }
-  
-  /* Styles for form input elements */
+
+  select,
   input[type="text"] {
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0;
-    border: 1px solid hsl(209, 26%, 35%);
-    border-radius: 3px;
+    width: 100%; /* Make form inputs full width for smaller screens */
   }
-  
-  /* Styles for the search button */
+
   button {
-    background-color: hsl(209, 26%, 35%);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    margin: 10px 0;
+    width: 100%; /* Make button full width for smaller screens */
   }
-  
-  /* Styles for the search results table */
-  table {
-    border: 1px solid #ccc;
-    border-collapse: collapse;
-    width: 100%;
-  }
-  
-  table th, table td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  /* Styles for table headers */
-  table th {
-    background-color: #f3f3f3;
-    font-weight: bold;
-  }
-  
-  /* Styles for table rows */
-  table tr:nth-child(odd) {
-    background-color: #f9f9f9;
-  }
-  
-  /* Styles for table rows on hover */
-  table tr:hover {
-    background-color: #e7a0a0;
-  }
-  
-  /* Styles for customer links */
-  .customer-link {
-    text-decoration: none;
-    color: hsl(209, 26%, 35%);
-  }
-  
+}

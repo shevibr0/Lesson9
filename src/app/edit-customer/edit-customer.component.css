@@ -1,3 +1,4 @@
+/* Normal mode styles for larger screens */
 .customer-list {
   list-style: none;
   display: flex;
@@ -14,18 +15,17 @@
   padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  
 }
+
 .customer-item:hover {
-  
   background-color: #e7a0a0;
- 
 }
 
 .customer-link {
   text-decoration: none;
   color: hsl(209, 26%, 35%);
 }
+
 h2 {
   text-align: center;
   background-color: #f3f3f3;
@@ -35,4 +35,15 @@ h2 {
   width: 40%;
   margin: 0 auto;
   margin-top: 20px;
+}
+
+/* Responsive mode styles for smaller screens */
+@media only screen and (max-width: 600px) {
+  .customer-list {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  h2 {
+    width: 80%; /* Adjust width for smaller screens */
+  }
 }

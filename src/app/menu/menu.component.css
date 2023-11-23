@@ -31,3 +31,27 @@
   align-items: center;
   height: 100vh; /* Adjust this for the desired height */
 }
+@media only screen and (min-width: 600px) {
+  .nav-link {
+    font-size: 16px; /* Decrease font size for tablets */
+    margin: 0 15px; /* Adjust spacing for tablets */
+  }
+
+  .logo {
+    font-size: 28px; /* Decrease font size for tablets */
+    margin-top: 15px; /* Adjust spacing for tablets */
+  }
+}
+
+/* Media query for desktop screens */
+@media only screen and (min-width: 1200px) {
+  .nav-link {
+    font-size: 20px; /* Increase font size for desktop */
+    margin: 0 25px; /* Adjust spacing for desktop */
+  }
+
+  .logo {
+    font-size: 32px; /* Keep font size for desktop */
+    margin-top: 20px; /* Adjust spacing for desktop */
+  }
+}

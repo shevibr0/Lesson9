@@ -95,8 +95,11 @@ export class ProductlistComponent {
           const products = productData.map((user: any) => ({
             id: user.payload.doc.id,
             ...user.payload.doc.data()
+
           }
+
           ));
+          console.log("ssssssssssssssssssssssssssssssssss")
           const customers = customerData.map((user: any) => ({
             id: user.payload.doc.id,
             ...user.payload.doc.data()

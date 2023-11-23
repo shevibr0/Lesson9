@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from "@angular/fire/compat/firestore"
+import { AngularFirestore } from "@angular/fire/compat/firestore"
 import { DocumentReference, QuerySnapshot } from 'firebase/firestore';
 import { Observable, forkJoin, from, of, throwError } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
@@ -9,7 +9,7 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 })
 export class FirebaseService {
 
-  constructor(private firestore : AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { }
 
 
   getAllProducts() {
@@ -27,15 +27,15 @@ export class FirebaseService {
   getAllPurchases() {
     return this.firestore.collection('Purchases').snapshotChanges()
   }
-  getOne(id : string) {
+  getOne(id: string) {
     return this.firestore.collection('Products').doc(id).valueChanges()
   }
 
-  createUser(obj : any) {
+  createUser(obj: any) {
     this.firestore.collection('Products').add(obj)
   }
 
-  
+
 
   getHighestPurchaseId(): Promise<number | null> {
     return this.firestore.collection('Purchases', (ref: any) => ref.orderBy('id', 'desc').limit(1)).get()
@@ -54,7 +54,7 @@ export class FirebaseService {
         return null;
       }) as Promise<number | null>;
   }
-  
+
   createPurchase(purchase: any): Promise<void> {
     return this.firestore.collection('Purchases').add(purchase)
       .then(() => {
@@ -64,7 +64,7 @@ export class FirebaseService {
         console.error('Error creating purchase:', error);
         throw error; // You can choose to throw the error or handle it as needed
       });
-  
+
   }
 
   checkIfProductExists(productId: string): Observable<boolean> {
@@ -74,12 +74,12 @@ export class FirebaseService {
       map((doc) => {
         if (doc.exists) {
           // The document exists, so you can access its data, including the 'id' field.
-          const productData: any = doc.data() 
+          const productData: any = doc.data()
           const idFieldExists = productData.hasOwnProperty('id');
           const idFieldValue = productData['id:1'];
-          console.log("idFieldValue",idFieldValue)
+          console.log("idFieldValue", idFieldValue)
           return idFieldValue;
-          
+
         } else {
           // The document doesn't exist.
           return false;
@@ -90,7 +90,7 @@ export class FirebaseService {
   updateProductQuantity(productId: number, change: number): Observable<void> {
     return this.firestore.collection('Products').doc(productId.toString()).get().pipe(
       switchMap((doc) => {
-        console.log("yesss",doc)
+        console.log("yesss", doc)
         if (doc.exists) {
           console.log("yaff")
           const currentQuantity = doc.data() as { Quantity: number };
@@ -144,12 +144,12 @@ export class FirebaseService {
     return from(batch.commit());
   }
 
-  updateCustomer(customertId: string,updatedCustomerData: any) {
+  updateCustomer(customertId: string, updatedCustomerData: any) {
     return this.firestore.collection('Customers').doc(customertId).update(updatedCustomerData);
   }
 
 
-  deleteCustomer (customerId: string): Observable<void> {
+  deleteCustomer(customerId: string): Observable<void> {
     // Create a batch to perform multiple operations atomically
     const batch = this.firestore.firestore.batch();
 
@@ -191,7 +191,7 @@ export class FirebaseService {
       .doc(productId)
       .get()
       .toPromise() // Convert to a Promise
-      .then((doc:any) => {
+      .then((doc: any) => {
         if (doc.exists) {
           // Product with the specified ID found
           const product = doc.data();
@@ -219,4 +219,5 @@ export class FirebaseService {
   findProductById1(productId: string): Observable<any> {
     return this.firestore.collection('Products').doc(productId).valueChanges();
   }
-  }
+
+}
