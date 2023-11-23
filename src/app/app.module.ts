@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common'; 
+import { CommonModule } from '@angular/common';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MenuComponent } from './menu/menu.component';
 import { ProductsComponent } from './products/products.component';
 import { CustomersComponent } from './customers/customers.component';
-import { PurchasesComponent} from './purchases/purchases.component';
+import { PurchasesComponent } from './purchases/purchases.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ProductlistComponent } from './productlist/productlist.component';
@@ -22,20 +22,20 @@ import { AuthGuard } from './auth.guard';
 import { adminGuard } from './admin.guard'
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
-const appRoutes:Routes=[
-  {path:'menu', component:MenuComponent},
-  {path:'admin-dashboard',component: AdminDashboardComponent,canActivate: [adminGuard]},
-  {path:'', component:LoginComponent},
-  {path:'not-authorized', component: NotAuthorizedComponent },
-  {path:'Products', component:ProductlistComponent, canActivate: [AuthGuard]},
-  {path:'Customers', component:CustomersComponent,canActivate: [AuthGuard]},
-  {path:'Customers/EditProduct/:id', component:EditProductComponent,canActivate: [AuthGuard]},
-  {path:'Purchases', component:PurchasesComponent,canActivate: [AuthGuard]},
-  {path:'EditCustomer/:id', component:EditCustomerComponent,canActivate: [AuthGuard, adminGuard]},
-  {path:'EditProduct/:id', component:EditProductComponent, canActivate: [AuthGuard, adminGuard]},
-  {path:'Products/EditProduct/:id', component:EditProductComponent,canActivate: [AuthGuard, adminGuard]}
-  
- ]
+const appRoutes: Routes = [
+  { path: 'menu', component: MenuComponent },
+  { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [adminGuard] },
+  { path: '', component: MenuComponent },
+  { path: 'not-authorized', component: NotAuthorizedComponent },
+  { path: 'Products', component: ProductlistComponent, canActivate: [AuthGuard] },
+  { path: 'Customers', component: CustomersComponent, canActivate: [AuthGuard] },
+  { path: 'Customers/EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard] },
+  { path: 'Purchases', component: PurchasesComponent, canActivate: [AuthGuard] },
+  { path: 'EditCustomer/:id', component: EditCustomerComponent, canActivate: [AuthGuard, adminGuard] },
+  { path: 'EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard, adminGuard] },
+  { path: 'Products/EditProduct/:id', component: EditProductComponent, canActivate: [AuthGuard, adminGuard] }
+
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +51,7 @@ const appRoutes:Routes=[
     LoginComponent,
     AdminDashboardComponent,
     NotAuthorizedComponent,
-  
+
   ],
   imports: [
     BrowserModule,
@@ -61,12 +61,12 @@ const appRoutes:Routes=[
     AngularFireAuthModule,
     AngularFireModule.initializeApp(
       {
-      apiKey: "AIzaSyCt3SCOzN1vlSOLv-teCkI8iof7MR3ITMU",
-      authDomain: "website-for-managing-a-store.firebaseapp.com",
-      projectId: "website-for-managing-a-store",
-      storageBucket: "website-for-managing-a-store.appspot.com",
-      messagingSenderId: "853811771380",
-      appId: "1:853811771380:web:baea4676839040da4deba1"
+        apiKey: "AIzaSyCt3SCOzN1vlSOLv-teCkI8iof7MR3ITMU",
+        authDomain: "website-for-managing-a-store.firebaseapp.com",
+        projectId: "website-for-managing-a-store",
+        storageBucket: "website-for-managing-a-store.appspot.com",
+        messagingSenderId: "853811771380",
+        appId: "1:853811771380:web:baea4676839040da4deba1"
       }
     ),
     RouterModule.forRoot(appRoutes),
@@ -75,4 +75,4 @@ const appRoutes:Routes=[
   providers: [AuthGuard, adminGuard],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
