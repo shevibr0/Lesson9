@@ -1,3 +1,5 @@
+Stored on the server: https://66914f46f991733acac41903--vermillion-peony-796188.netlify.app/
+
 In this complex period when the husband is in the reserves and the news is mentally draining and draining,
 
 The ability to write code when my head is 100% occupied with another topic helped me a lot.
@@ -12,9 +14,6 @@ Through the site you can track and extract information about customer activity, 
 Angular client-side
 
 Firebase server side
-
-Stored on the server:
-https://gentle-chimera-d6973f.netlify.app/
 
 I enjoyed.
 
