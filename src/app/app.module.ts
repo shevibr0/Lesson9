@@ -26,7 +26,7 @@ const appRoutes: Routes = [
   { path: 'menu', component: MenuComponent },
   {
     path: 'admin-dashboard', component: AdminDashboardComponent, //canActivate: [adminGuard] 
-  }, { path: '', component: LoginComponent },
+  }, { path: '', component: MenuComponent },
   { path: 'not-authorized', component: NotAuthorizedComponent },
   {
     path: 'Products', component: ProductlistComponent, //canActivate: [AuthGuard]
